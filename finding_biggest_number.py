@@ -5,16 +5,24 @@
 
 # ask user to input 3 numbers
 
-num1 = (input("Please Enter the First number: "))
-num2 = (input("Please Enter the Second number: "))
-num3 = (input("Please Enter your Third number: "))
+# variables
+num1 = float ((input ("Please Enter the First Number: ")))
+num2 = float ((input ("Please Enter the Second Number: ")))
+num3 = float ((input ("Please Enter the Third Number: ")))
+maximum = 0
 
-#try
-# check if number is the max number
+
+#if-else
 if (num1 > num2) and (num1 > num3):
-    print ("The maximum number among the three is: " + num1) 
+    maximum = num1
+    print ("The highest number among the three is: ", num1)
+elif (num2 > num1) and (num2 > num3):
+    maximum = num2
+    print ("The highest number among the three is: ", num2)
 else:
-    print ("All number are equal.")
+    print ("The highest number among the three is: ", num3)
+
 
 # find the biggest number
+    
 # display the result
