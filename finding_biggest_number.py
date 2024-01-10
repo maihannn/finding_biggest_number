@@ -8,7 +8,7 @@ from tkinter import *
 from tkinter import messagebox
 root=Tk()
 root.title ("Highest Number Finder")
-root.geometry ("950x420") 
+root.geometry ("875x450") 
 bg_color = "#C1ECEA"
 
 
@@ -48,21 +48,32 @@ title.pack (fill=X)
 
 # creating widgets
 
-input_number=LabelFrame(root, text = "Input a Number", font=("STIX", 20, "bold"), fg="#F63392", bg="#EED3E1", relief=GROOVE, bd=7)
-input_number.place(x=5, y=55, width=580, height=260)
+# adding widgets for entry or inputs
+# title: input number
+input_number=Label(root, text = "Input a Number", font=("STIX", 20, "bold"), fg="#F63392", bg="#EED3E1", relief=GROOVE, bd=7)
+input_number.place(x=5, y=55, width=520, height=65)
 
-number1=Label(input_number, text=" 1st Number:", font=("Courier 10 Pitch", 18, "bold"), fg="#262224", bg="#EED3E1")
+
+# for inputting numbers
+input_num=LabelFrame(root, bg="#EED3E1", relief=GROOVE, bd=7)
+input_num.place(x=5, y=120, width=520, height=240)
+
+number1=Label(input_num, text=" 1st Number:", font=("Courier 10 Pitch", 18, "bold"), fg="#262224", bg="#EED3E1")
 number1.grid(row=1, column=0, padx=20, pady=15)
-number1=Entry (input_number, font=("Courier 10 Pitch", 18), bg="#F7F1F4", relief=SUNKEN, bd=7, justify=CENTER)
+number1=Entry (input_num, font=("Courier 10 Pitch", 18), bg="#F7F1F4", relief=SUNKEN, bd=7, justify=CENTER)
 number1.grid (row=1, column=1, padx=20, pady=15)
-number2=Label(input_number, text="2nd Number:", font=("Courier 10 Pitch", 18, "bold"), fg="#262224", bg="#EED3E1")
+number2=Label(input_num, text="2nd Number:", font=("Courier 10 Pitch", 18, "bold"), fg="#262224", bg="#EED3E1")
 number2.grid(row=2, column=0, padx=20, pady=15)
-number2=Entry (input_number, font=("Courier 10 Pitch", 18), bg="#F7F1F4", relief=SUNKEN, bd=7, justify=CENTER)
+number2=Entry (input_num, font=("Courier 10 Pitch", 18), bg="#F7F1F4", relief=SUNKEN, bd=7, justify=CENTER)
 number2.grid (row=2, column=1, padx=20, pady=15)
-number3=Label(input_number, text="3rd Number:", font=("Courier 10 Pitch", 18, "bold"), fg="#262224", bg="#EED3E1")
+number3=Label(input_num, text="3rd Number:", font=("Courier 10 Pitch", 18, "bold"), fg="#262224", bg="#EED3E1")
 number3.grid(row=3, column=0, padx=20, pady=15)
-number3=Entry (input_number, font=("Courier 10 Pitch", 18), bg="#F7F1F4", relief=SUNKEN, bd=7, justify=CENTER)
+number3=Entry (input_num, font=("Courier 10 Pitch", 18), bg="#F7F1F4", relief=SUNKEN, bd=7, justify=CENTER)
 number3.grid (row=3, column=1, padx=20, pady=15)
+
+# title: highest number
+highest_number=Label(root, text = "Highest Number", font=("STIX", 20, "bold"), fg="#F63392", bg="#EED3E1", relief=GROOVE, bd=7)
+highest_number.place(x=525, y=55, width=345, height=65)
 
 
 
