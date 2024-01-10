@@ -8,40 +8,59 @@ from tkinter import *
 from tkinter import messagebox
 root=Tk()
 root.title ("Highest Number Finder")
-root.geometry ("875x450") 
+root.geometry ("540x660")
+root.resizable (False, False) 
 bg_color = "#C1ECEA"
 
 
-def highest_number ():
-    try:
+# variables
+num1_input = IntVar ()
+num2_input = IntVar ()
+num3_input = IntVar ()
 
-        # getting the inut
-        num1 = float (input ("Enter the First Number: "))
-        num2 = float (input ("Enter the Second Number: "))
-        num3 = float (input ("Enter the Third Number: "))
-        largest = 0
+num_1 = StringVar()
+num_2 = StringVar()
+num_3 = StringVar()
+highest_number = StringVar()
+
+def highest_number_get ():
+    
+
+    if num1_input.get()==0 or num2_input.get()==0 or num3_input.get()==0:
+        messagebox.showerror ("Error.", "Please input a number.")
+    
+    elif num1_input.get()==(str) or num2_input.get()==(str) or num3_input.get()==(str):
+        messagebox.showerror ("Error.", "Please type a number.")
+
+    else: 
+        num1 =  (num1_input.get())
+        num2 =  (num2_input.get())
+        num3 =  (num3_input.get())
         
-    except ValueError:
-        print ("Error.")
-
+        
     #if-else
-    if num1 >= num2 and num1 >= num3:
-        largest = num1
-        print (f"The Largest Number among the Three is {num1}")
-    elif num2 >= num1 and num2 >= num3:
-        largest = num2
-        print (f"The Largest Number among the Three is {num2}")
-    else:
-        largest = num3
-        print (f"The Largest Number among the Three is {num3}")
+        
+        if num1 >= num2 and num1 >= num3:
+            highest_number.set (num1)
+        elif num2 >= num1 and num2 >= num3:
+            highest_number.set(num2)
+        else:
+            highest_number.set(num3)
+        
 
-    return largest
+def reset():
+    num1_input.set(0)
+    num2_input.set(0)
+    num3_input.set(0)
+    highest_number.set(0)
 
-
+def exit():
+    if messagebox.askyesno("Exit", "Do you really want to exit?"):
+        root.destroy()
     
 # creating widgets
 # title widget
-title = Label (root, text = "Biggest Number Finder", font=("STIX", 20, "bold"), fg="#F63392", bg="#C1ECEA", relief=GROOVE, bd=10)
+title = Label (root, text = "Highest Number Finder", font=("STIX", 20, "bold"), fg="#F63392", bg="#C1ECEA", relief=GROOVE, bd=10)
 title.pack (fill=X)
 
 
@@ -60,21 +79,36 @@ input_num.place(x=5, y=120, width=520, height=240)
 
 number1=Label(input_num, text=" 1st Number:", font=("Courier 10 Pitch", 18, "bold"), fg="#262224", bg="#EED3E1")
 number1.grid(row=1, column=0, padx=20, pady=15)
-number1=Entry (input_num, font=("Courier 10 Pitch", 18), bg="#F7F1F4", relief=SUNKEN, bd=7, justify=CENTER)
+number1=Entry (input_num, font=("Courier 10 Pitch", 18), bg="#F7F1F4", relief=SUNKEN, bd=7, justify=CENTER, textvariable = num1_input)
 number1.grid (row=1, column=1, padx=20, pady=15)
 number2=Label(input_num, text="2nd Number:", font=("Courier 10 Pitch", 18, "bold"), fg="#262224", bg="#EED3E1")
 number2.grid(row=2, column=0, padx=20, pady=15)
-number2=Entry (input_num, font=("Courier 10 Pitch", 18), bg="#F7F1F4", relief=SUNKEN, bd=7, justify=CENTER)
+number2=Entry (input_num, font=("Courier 10 Pitch", 18), bg="#F7F1F4", relief=SUNKEN, bd=7, justify=CENTER, textvariable = num2_input)
 number2.grid (row=2, column=1, padx=20, pady=15)
 number3=Label(input_num, text="3rd Number:", font=("Courier 10 Pitch", 18, "bold"), fg="#262224", bg="#EED3E1")
 number3.grid(row=3, column=0, padx=20, pady=15)
-number3=Entry (input_num, font=("Courier 10 Pitch", 18), bg="#F7F1F4", relief=SUNKEN, bd=7, justify=CENTER)
+number3=Entry (input_num, font=("Courier 10 Pitch", 18), bg="#F7F1F4", relief=SUNKEN, bd=7, justify=CENTER, textvariable = num3_input)
 number3.grid (row=3, column=1, padx=20, pady=15)
 
-# title: highest number
-highest_number=Label(root, text = "Highest Number", font=("STIX", 20, "bold"), fg="#F63392", bg="#EED3E1", relief=GROOVE, bd=7)
-highest_number.place(x=525, y=55, width=345, height=65)
+# result
+get_result=LabelFrame(root, text = "Highest Number", font=("STIX", 20, "bold"), fg="#F63392", bg="#EED3E1", relief=GROOVE, bd=7)
+get_result.place(x=5, y=360, width=520, height=120)
 
+result=Label(get_result, text="Result:", font=("Courier 10 Pitch", 18, "bold"), fg="#262224", bg="#EED3E1")
+result.grid(row=1, column=0, padx=20, pady=15)
+result=Entry (get_result, font=("Courier 10 Pitch", 18), bg="#F7F1F4", relief=SUNKEN, bd=7, justify=CENTER, textvariable=highest_number)
+result.grid(row=1, column=1, padx=90, pady=15)
+# adding buttons
 
+button=Frame(root)
+button.place(x=5,y=480, width=515, height=200)
 
+submit_button=Button (button, text="Submit", font=("Ubuntu", 20, "bold"), bg="#E2F4E0",  fg="#1A9423", justify=CENTER, width=30, command=highest_number_get)
+submit_button.grid(row=0, column=0, columnspan=5, padx=1, pady=1)
+
+reset_button=Button (button, text="Reset", font=("Ubuntu", 20, "bold"), bg="#E2F4E0",  fg="#1A9423", justify=CENTER, width=30, command=reset)
+reset_button.grid(row=1, column=0, columnspan=5, padx=1, pady=1)
+
+exit_button=Button (button, text="Exit", font=("Ubuntu", 20, "bold"), bg="#E2F4E0",  fg="#1A9423", justify=CENTER, width=30, command=exit)
+exit_button.grid(row=2, column=0, columnspan=5, padx=1, pady=1)
 root.mainloop()
