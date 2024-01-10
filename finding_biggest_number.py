@@ -7,12 +7,12 @@
 from tkinter import *
 from tkinter import messagebox
 root=Tk()
-root.title ("Biggest Number Finder")
-root.geometry ("350x200") 
-bg_color="#C1ECEA"
+root.title ("Highest Number Finder")
+root.geometry ("950x420") 
+bg_color = "#C1ECEA"
 
 
-def get_number ():
+def highest_number ():
     try:
 
         # getting the inut
@@ -37,27 +37,33 @@ def get_number ():
 
     return largest
 
-# creating widgets
 
-title = Label (root, text = "Biggest Number Finder", font=("STIX", 20, "bold"), fg="#F63392", bg="#C1ECEA")
+    
+# creating widgets
+# title widget
+title = Label (root, text = "Biggest Number Finder", font=("STIX", 20, "bold"), fg="#F63392", bg="#C1ECEA", relief=GROOVE, bd=10)
 title.pack (fill=X)
 
-num1 = Label (root, text = "Please Enter the First Number", font=("Garuda", 10, "bold"), fg = "#3B9A95", bg="#C1ECEA")
-num1_entry = Entry (root)
-num2 = Label (root, text = "   Please Enter the Second Number", font=("Garuda", 10, "bold"), fg = "#3B9A95", bg="#C1ECEA")
-num2_entry = Entry (root)
-num3 = Label (root, text = "Please Enter the Third Number", font=("Garuda", 10, "bold"), fg = "#3B9A95", bg="#C1ECEA")
-num3_entry = Entry (root)
-find_button = Button (root, text = "Find the Maximum Number")
 
-# adding widgets
-title.grid (row = 0, column =0, columnspan = 2)
-num1.grid (row=1, column=0)
-num1_entry.grid (row=1, column=1)
-num2.grid (row=2, column=0)
-num2_entry.grid (row=2, column=1)
-num3.grid (row=3, column=0)
-num3_entry.grid (row=3, column=1)
+
+# creating widgets
+
+input_number=LabelFrame(root, text = "Input a Number", font=("STIX", 20, "bold"), fg="#F63392", bg="#EED3E1", relief=GROOVE, bd=7)
+input_number.place(x=5, y=55, width=580, height=260)
+
+number1=Label(input_number, text=" 1st Number:", font=("Courier 10 Pitch", 18, "bold"), fg="#262224", bg="#EED3E1")
+number1.grid(row=1, column=0, padx=20, pady=15)
+number1=Entry (input_number, font=("Courier 10 Pitch", 18), bg="#F7F1F4", relief=SUNKEN, bd=7, justify=CENTER)
+number1.grid (row=1, column=1, padx=20, pady=15)
+number2=Label(input_number, text="2nd Number:", font=("Courier 10 Pitch", 18, "bold"), fg="#262224", bg="#EED3E1")
+number2.grid(row=2, column=0, padx=20, pady=15)
+number2=Entry (input_number, font=("Courier 10 Pitch", 18), bg="#F7F1F4", relief=SUNKEN, bd=7, justify=CENTER)
+number2.grid (row=2, column=1, padx=20, pady=15)
+number3=Label(input_number, text="3rd Number:", font=("Courier 10 Pitch", 18, "bold"), fg="#262224", bg="#EED3E1")
+number3.grid(row=3, column=0, padx=20, pady=15)
+number3=Entry (input_number, font=("Courier 10 Pitch", 18), bg="#F7F1F4", relief=SUNKEN, bd=7, justify=CENTER)
+number3.grid (row=3, column=1, padx=20, pady=15)
+
 
 
 root.mainloop()
