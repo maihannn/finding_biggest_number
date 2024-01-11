@@ -14,35 +14,38 @@ bg_color = "#C1ECEA"
 
 
 # variables
-num1_input = IntVar ()
-num2_input = IntVar ()
-num3_input = IntVar ()
-
-num_1 = StringVar()
-num_2 = StringVar()
-num_3 = StringVar()
+num1_input = StringVar ()
+num2_input = StringVar ()
+num3_input = StringVar ()
 highest_number = StringVar()
 
-def highest_number_get ():
-    
+def is_float(num1,num2,num3):
+     try:
+        float (num1)
+        float (num2)
+        float (num3)
+        return True
+     except ValueError:
+          return False
 
-    if num1_input.get()==0 or num2_input.get()==0 or num3_input.get()==0:
+def highest_number_get():
+    num1 = str(num1_input.get())
+    num2 = str(num2_input.get())
+    num3 = str(num3_input.get())
+    
+    if is_float(num1,num2,num3) == False:
         messagebox.showerror ("Error.", "Please input a number.")
-    
-    elif num1_input.get()==(str) or num2_input.get()==(str) or num3_input.get()==(str):
-        messagebox.showerror ("Error.", "Please type a number.")
 
-    else: 
-        num1 =  (num1_input.get())
-        num2 =  (num2_input.get())
-        num3 =  (num3_input.get())
+    elif num1_input.get()==0 or num2_input.get()==0 or num3_input.get()==0:
+        messagebox.showerror ("Error.", "Please input a number.")
         
-        
-    #if-else
-        
-        if num1 >= num2 and num1 >= num3:
-            highest_number.set (num1)
-        elif num2 >= num1 and num2 >= num3:
+    else:
+        n1 = float(num1)
+        n2 = float(num2)
+        n3 = float(num3)
+        if n1 >= n2 and n1 >= n3:
+            highest_number.set(num1)
+        elif n2 >= n1 and n2 >= n3:
             highest_number.set(num2)
         else:
             highest_number.set(num3)
@@ -62,7 +65,6 @@ def exit():
 # title widget
 title = Label (root, text = "Highest Number Finder", font=("STIX", 20, "bold"), fg="#F63392", bg="#C1ECEA", relief=GROOVE, bd=10)
 title.pack (fill=X)
-
 
 
 # creating widgets
@@ -98,6 +100,7 @@ result=Label(get_result, text="Result:", font=("Courier 10 Pitch", 18, "bold"), 
 result.grid(row=1, column=0, padx=20, pady=15)
 result=Entry (get_result, font=("Courier 10 Pitch", 18), bg="#F7F1F4", relief=SUNKEN, bd=7, justify=CENTER, textvariable=highest_number)
 result.grid(row=1, column=1, padx=90, pady=15)
+
 # adding buttons
 
 button=Frame(root)
@@ -111,4 +114,5 @@ reset_button.grid(row=1, column=0, columnspan=5, padx=1, pady=1)
 
 exit_button=Button (button, text="Exit", font=("Ubuntu", 20, "bold"), bg="#E2F4E0",  fg="#1A9423", justify=CENTER, width=30, command=exit)
 exit_button.grid(row=2, column=0, columnspan=5, padx=1, pady=1)
+
 root.mainloop()
